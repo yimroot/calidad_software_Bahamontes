@@ -10,6 +10,6 @@ describe('puedeConducir', () => {
     })
     test('Sad path: edad inválida', () => {
         expect(() => puedeConducir(-1)).toThrow('edad inválida')
-        expect(() => esPar('18')).toThrow('edad inválida')
+        expect(() => puedeConducir('18')).toThrow('edad inválida')
     })
 })
