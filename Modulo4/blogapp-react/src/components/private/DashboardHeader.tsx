@@ -6,10 +6,11 @@ import { getUser } from '@/api/users.api'
 import { avatarColor } from '@/lib/avatar-color'
 import { cn } from '@/lib/utils'
 import type { User } from '@/types/user.types'
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
   DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { avatarSrc } from '@/lib/urls'
 
 export default function DashboardHeader() {
   const navigate = useNavigate()
@@ -25,7 +26,8 @@ export default function DashboardHeader() {
     <header className="flex items-center justify-between border-b p-4">
       <DropdownMenu>
         <DropdownMenuTrigger className="flex items-center gap-2">
-          <Avatar className="h-8 w-8">  
+          <Avatar className="h-8 w-8">
+            <AvatarImage src={avatarSrc(user)} />  
             <AvatarFallback className={cn(avatarColor(user?.username ?? '?'), 'text-white')}>
               {user?.username.slice(0, 2).toUpperCase() ?? '..'}
             </AvatarFallback>
